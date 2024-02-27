@@ -42,6 +42,11 @@ end
 
 util.show_corner_help(" \n~p~Let's find some ~r~BAD MODDERS\n ")
 
+util.on_stop(function ()
+end)
+    
+players.dispatch_on_join()
+
 --==================================================================--
 
 
@@ -58,7 +63,7 @@ local badModders = {
     "Cloudflare",
     "JustCallMeDenny",
     "TheROME007",
-    "Sheex",
+    "",
     "",
     "",
     "",
@@ -156,7 +161,3 @@ for i, playerName in ipairs(playersName) do
 end
 
 --====================END========================--
-util.on_stop(function ()
-end)
-    
-players.dispatch_on_join()

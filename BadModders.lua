@@ -1,42 +1,29 @@
 --=========================================UPDATES==============================================--
-local github = menu.list(menu.my_root(), "Updates", {"badmoddersupdates"})
-menu.hyperlink(github, "Bad Modders Discord", "https://discord.gg/")
-
-async_http.init("raw.githubusercontent.com","",function(text)
-    menu.action(github, "Changelog", {"badmodderschangelog"}, text, function() end)
-    response=true;
-end)
-async_http.dispatch()
-repeat util.yield()
-until response
-
-if not dev_mode then
-    async_http.init("raw.githubusercontent.com","",function(b)
-    currentVer=tonumber(b)
-    response=true;
-    if badmodders_version~=currentVer then
-        util.toast("New Version found")async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
-        local d=select(2,load(c))
-        if d then
-            util.toast("")
-            return
-            end;
-            local e=io.open(filesystem.scripts_dir()..SCRIPT_RELPATH,"wb")
-            e:write(c)
-            e:close()
-            util.toast("Update Done!")
-            util.restart_script()
+async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/badmodders_version.txt", function(output)
+    currentVer = tonumber(output)
+    response = true
+    if localVer ~= currentVer then
+        util.toast("[BAD Modders] There is a new bad modders, update your LUA.")
+        menu.action(menu.my_root(), "Update Lua", {}, "", function()
+            async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(a)
+                local err = select(2,load(a))
+                if err then
+                    util.toast("There was a failure updating the script, do it manually from github.")
+                return end
+                local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
+                f:write(a)
+                f:close()
+                util.toast("Script updated")
+                util.restart_script()
             end)
             async_http.dispatch()
-        end
-    end,
-    function()
-        response=true
-    end)
-    async_http.dispatch()
-    repeat util.yield()
-    until response
-end
+        end)
+    end
+end, function() response = true end)
+async_http.dispatch()
+repeat 
+    util.yield()
+until response
 
 ----------------------------------------------------------------
 
@@ -50,8 +37,8 @@ local badModders = {
     "LaFrappe667",
     "ll-LaPuenta-ll",
     "johnnynotfound",
-    "butwhen",
-    "Aeko13760",
+    "",
+    "",
     "",
     "",
     "",
@@ -69,8 +56,8 @@ local rids = {
     "210533533",
     "236797318",
     "192652074",
-    "178813985",
-    "196275741",
+    "",
+    "",
     "",
     "",
     "",

@@ -1,8 +1,4 @@
 --=========================================UPDATES==============================================--
-async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/badmodders_version.txt", function(output)
-    currentVer = tonumber(output)
-    response = true
-    if localVer ~= currentVer then
         util.toast("[BAD Modders] There is a new bad modders, update your LUA.")
         menu.action(menu.my_root(), "Update Lua", {}, "", function()
             async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(a)

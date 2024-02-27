@@ -58,7 +58,7 @@ local badModders = {
     "Cloudflare",
     "JustCallMeDenny",
     "TheROME007",
-    "",
+    "Sheex",
     "",
     "",
     "",

@@ -1,3 +1,8 @@
+if not async_http.have_access() then
+    util.toast("Disable 'Disable Internet Access'!")
+    util.stop_script()
+end
+
 local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"}, "")
 menu.hyperlink(github, "Discord", "https://discord.gg/")
 

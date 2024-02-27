@@ -32,6 +32,10 @@ if not dev_mode then
     function()
         response=true
     end)
+    async_http.dispatch()
+    repeat util.yield()
+    until response
+end
 --=========================================UPDATES==============================================--
 
 ----------------------------------------------------------------
@@ -156,4 +160,3 @@ util.on_stop(function ()
 end)
     
 players.dispatch_on_join()
-end

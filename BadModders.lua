@@ -49,7 +49,7 @@ util.show_corner_help(" \n~p~Let's find some ~r~BAD MODDERS\n ")
 local badModders = {
     "LaFrappe667",
     "ll-LaPuenta-ll",
-    "",
+    "johnnynotfound",
     "",
     "",
     "",
@@ -68,7 +68,7 @@ local badModders = {
 local rids = {
     "210533533",
     "236797318",
-    "",
+    "192652074",
     "",
     "",
     "",

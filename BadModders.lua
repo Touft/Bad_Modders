@@ -5,7 +5,7 @@ end
 
 --=========================================UPDATES==============================================--
 local response = false
-local localVer = 1.0
+local localVer = 1.1
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/badmodders_version.lua", function(output)
     currentVer = tonumber(output)
@@ -49,7 +49,7 @@ local badModders = {
     "KilliKiituri",
     "ExtraLT",
     "ciupakabra95",
-    "",
+    "gamercats2",
     "",
     "",
     "",
@@ -68,7 +68,7 @@ local rids = {
     "138885648",
     "242394341",
     "166449239",
-    "",
+    "9991903",
     "",
     "",
     "",

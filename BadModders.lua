@@ -1,5 +1,5 @@
 local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"})
-addict.hyperlink(github, "Discord", "https://discord.gg/" .. dcinv)
+menu.hyperlink(github, "Discord", "https://discord.gg/" .. dcinv)
 
 async_http.init("raw.githubusercontent.com","",function(text)
     menu.action(github, "Changelog", {"modderschangelog"}, text, function() end)

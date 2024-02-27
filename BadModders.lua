@@ -1,4 +1,4 @@
-local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"})
+local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"}, "")
 menu.hyperlink(github, "Discord", "https://discord.gg/")
 
 async_http.init("raw.githubusercontent.com","",function(text)

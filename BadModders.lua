@@ -15,7 +15,7 @@ if not dev_mode then
     currentVer=tonumber(b)
     response=true;
     if badmodders_version~=currentVer then
-        util.toast("New Version found")async_http.init('raw.githubusercontent.com','',function(c)
+        util.toast("New Version found")async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
         local d=select(2,load(c))
         if d then
             util.toast("")

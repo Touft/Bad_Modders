@@ -1,3 +1,4 @@
+util.require_natives("3095a")
 -- Auto Updater from https://github.com/hexarobi/stand-lua-auto-updater
 local status, auto_updater = pcall(require, "auto-updater")
 if not status then
@@ -87,6 +88,13 @@ for _, playerId in ipairs(playersList) do
 end
 
 ---------------------------------------------------------------
+
+-- Manually check for updates with a menu option
+menu.action(script_meta_menu, "Check for Update", {}, "The script will automatically check for updates at most daily, but you can manually check using this option anytime.", function()
+    auto_update_config.check_interval = 0
+    util.toast("Checking for updates")
+    auto_updater.run_auto_update(auto_update_config)
+end)
 
 menu.divider(menu.my_root(), "")
 local modders = menu.list(menu.my_root(), "Bad Modders", {}, "")

@@ -2,7 +2,7 @@ local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"})
 addict.hyperlink(github, "Discord", "https://discord.gg/" .. dcinv)
 
 async_http.init("raw.githubusercontent.com","",function(text)
-    addict.action(github, "Changelog", {"modderschangelog"}, text, function() end)
+    menu.action(github, "Changelog", {"modderschangelog"}, text, function() end)
     response=true;
 end)
 async_http.dispatch()
@@ -13,7 +13,7 @@ if not dev_mode then
     async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)
     currentVer=tonumber(b)
     response=true;
-    if addict_version~=currentVer then
+    if BadModdersVersion~=currentVer then
         util.toast("New Version found")async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
         local d=select(2,load(c))
         if d then

@@ -59,7 +59,7 @@ local badModders = {
     "JustCallMeDenny",
     "TheROME007",
     "Sheex",
-    "",
+    "Aka",
     "",
     "",
     ""

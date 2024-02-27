@@ -40,8 +40,7 @@ end
 
 ----------------------------------------------------------------
 
-util.show_corner_help(" \n~p~Let's find some ~r~BAD MODDERS\n "
-end)
+util.show_corner_help(" \n~p~Let's find some ~r~BAD MODDERS\n ")
 
 --==================================================================--
 

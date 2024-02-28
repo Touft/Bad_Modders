@@ -4,17 +4,14 @@ if not async_http.have_access() then
     util.stop_script()
 end
 
-
-
-
 local response = false
-local localVer = 0.4
+local localVer = 0.5
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersVersion.txt", function(output)
     currentVer = tonumber(output)
     response = true
     if localVer ~= currentVer then
-        util.toast("[Ryze Script] There is an update, click on the button to update the script.")
+        util.toast("[Bad Modders] There is an update, click on the button to update the script.")
         menu.action(menu.my_root(), "Update Lua", {}, "", function()
             async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(a)
                 local err = select(2,load(a))
@@ -34,20 +31,21 @@ end, function() response = true end)
 async_http.dispatch()
 repeat 
     util.yield()
-until response
---=========================================UPDATES==============================================--
+until response                                                         --Skidded but bro, this is just for updates
 
-----------------------------------------------------------------
 
-util.show_corner_help(" \n~p~Let's find some ~r~BAD MODDERS\n ")
+util.show_corner_help(" §\n~p~Let's find some ~r~BAD MODDERS\n§ ")
 
---==================================================================--
+
 
 
 
 local badModders = {
-    "LaFrappe667",
     "ll-LaPuenta-ll",
+    "LaFrappe667",
+    "butwhen",
+    "Aeko13760",
+    "Juke755",
     "johnnynotfound",
     "Qbakaa",
     "KilliKiituri",
@@ -57,12 +55,24 @@ local badModders = {
     "Cloudflare",
     "JustCallMeDenny",
     "TheROME007",
-    "Aka"
+    "CoronavirusKill",
+    "The_British_Guy6",
+    "FreeLancer_07",
+    "..Prime",
+    "swagxton",
+    "usedKeyboardWarr",
+    "End-In-Passive",
+    "qDependency",
+    "La69emeFace",
+    "Lissssaaa"
 }
 
 local rids = {
-    "210533533",
     "236797318",
+    "210533533",
+    "178813985",
+    "196275741",
+    "144659014",
     "192652074",
     "229365247",
     "138885648",
@@ -71,7 +81,17 @@ local rids = {
     "79991903",
     "55401915",
     "242595307",
-    "160274841"
+    "160274841",
+    "139253764",
+    "246724247",
+    "235426568",
+    "238957858",
+    "211270440",
+    "243421618",
+    "131564119",
+    "88201667 ",
+    "193782695",
+    "246530233"
 }
 
 local playersList = players.list(true, true, true)
@@ -86,13 +106,10 @@ for _, playerId in ipairs(playersList) do
     table.insert(playersRid, playerRid)
 end
 
----------------------------------------------------------------
 
 menu.divider(menu.my_root(), "")
 local modders = menu.list(menu.my_root(), "Bad Modders", {}, "")
 
-
---------------------------------------------------------------------
 
 local badModders_menus = {}
 for i, modder in ipairs(badModders) do
@@ -115,8 +132,8 @@ for i, playerName in ipairs(playersName) do
         if normalizedPlayerName == normalizedModderName then
             local ridToCompare = rids[j]:gsub("%s+", "")
             if playerRid == ridToCompare then
-                print("!!! " .. playerName .. " is a Bad Modder with RID " .. playerRid .. " (he is on the list)")
-                util.toast("!!! " .. playerName .. " is a Bad Modder with RID " .. playerRid .. " (he is on the list)")
+                print("[Bad Modders] " .. playerName .. " is a Bad Modder with RID " .. playerRid .. " (he is on the list)")
+                util.toast("[Bad Modders] " .. playerName .. " is a Bad Modder with RID " .. playerRid .. " (he is on the list)")
                 foundByRid = true
                 foundByName = true
             else
@@ -137,17 +154,32 @@ for i, playerName in ipairs(playersName) do
     
     if foundByRid and foundByName then
     elseif foundByRid then
-        print("!!! Only the RID corresponds to " .. playerName .. " (it's probably him, he can change his name but not his RID)")
-        util.toast("!!! Only the RID corresponds to " .. playerName .. " (it's probably him, he can change his name but not his RID)")
+        print("[Bad Modders] Only the RID corresponds to " .. playerName .. " (it's probably him, he can change his name but not his RID)")
+        util.toast("[Bad Modders] Only the RID corresponds to " .. playerName .. " (it's probably him, he can change his name but not his RID)")
     elseif foundByName then
-        print("!!! Only the NAME corresponds to " .. playerName .. " (it's probably not him, he can change his name but not his RID)")
-        util.toast("!!! Only the NAME corresponds to " .. playerName .. " (it's probably not him, he can change his name but not his RID)")
+        print("[Bad Modders] Only the NAME corresponds to " .. playerName .. " (it's probably not him, he can change his name but not his RID)")
+        util.toast("[Bad Modders] Only the NAME corresponds to " .. playerName .. " (it's probably not him, he can change his name but not his RID)")
     end
 end
 
---====================END========================--
 
 util.on_stop(function ()
 end)
     
 players.dispatch_on_join()
+
+
+
+--                     ___
+--                  __/_  `.  .-"""-.
+--                  \_,` | \-'  /   )`-')
+--                   "") `"`    \  ((`"`
+--                  ___Y  ,    .'7 /|
+--                 (_,___/...-` (_/_/ 
+--                This is my dog, Horya
+
+--Ty to ChatGPT for helping me (he is a good dev)
+--Ty to akayagi_au_ for doing NOTHING
+--Ty to .touftouf. for helping me a lot (this is me hehe)
+--Ty to im_too_strong for trying to help me
+--Ty to microsoft_ma for trying to help me

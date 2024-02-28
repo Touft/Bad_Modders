@@ -8,7 +8,7 @@ end
 
 
 local response = false
-local localVer = 0.3
+local localVer = 0.4
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersVersion.txt", function(output)
     currentVer = tonumber(output)
@@ -16,7 +16,7 @@ async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersV
     if localVer ~= currentVer then
         util.toast("[Ryze Script] There is an update, click on the button to update the script.")
         menu.action(menu.my_root(), "Update Lua", {}, "", function()
-            async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/blob/main/BadModders.lua',function(a)
+            async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(a)
                 local err = select(2,load(a))
                 if err then
                     util.toast("There was a failure updating the script, do it manually from github.")
@@ -56,7 +56,8 @@ local badModders = {
     "gamercats2",
     "Cloudflare",
     "JustCallMeDenny",
-    "TheROME007"
+    "TheROME007",
+    "Aka"
 }
 
 local rids = {

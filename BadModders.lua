@@ -3,43 +3,46 @@ if not async_http.have_access() then
     util.stop_script()
 end
 
+local response = false  -- Initialisation de la variable response à false
+
 local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"}, "")
 menu.hyperlink(github, "Discord", "https://discord.gg/")
 
 async_http.init("raw.githubusercontent.com","",function(text)
     menu.action(github, "Changelog", {"modderschangelog"}, text, function() end)
-    response=true;
+    response = true;  -- Définition de response à true après avoir reçu la réponse de la requête HTTP
 end)
 async_http.dispatch()
-repeat util.yield()
-until response
+repeat util.yield() until response
 
 if not dev_mode then
+    local response = false  -- Réinitialisation de response à false pour la prochaine requête HTTP
     async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)
-    currentVer=tonumber(b)
-    response=true;
-    if BadModdersVersion~=currentVer then
-        util.toast("New Version found")async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
-        local d=select(2,load(c))
-        if d then
-            util.toast("Update failed to download, please re-download manually via Github or using Addict Discord Server.")
-            return
-            end;
-            local e=io.open(filesystem.scripts_dir()..SCRIPT_RELPATH,"wb")
-            e:write(c)
-            e:close()
-            util.toast("Update Done!")
-            util.restart_script()
+        currentVer = tonumber(b)
+        response = true;  -- Définition de response à true après avoir reçu la réponse de la requête HTTP
+        if BadModdersVersion ~= currentVer then
+            util.toast("New Version found")
+            local response = false  -- Réinitialisation de response à false pour la prochaine requête HTTP
+            async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
+                local d = select(2,load(c))
+                if d then
+                    util.toast("Update failed to download, please re-download manually via Github or using Addict Discord Server.")
+                    return
+                end;
+                local e = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH,"wb")
+                e:write(c)
+                e:close()
+                util.toast("Update Done!")
+                util.restart_script()
             end)
             async_http.dispatch()
         end
     end,
     function()
-        response=true
+        response = true  -- Définition de response à true en cas d'erreur de la requête HTTP
     end)
     async_http.dispatch()
-    repeat util.yield()
-    until response
+    repeat util.yield() until response
 end
 --=========================================UPDATES==============================================--
 

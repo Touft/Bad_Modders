@@ -5,7 +5,7 @@ if not async_http.have_access() then
 end
 
 local response = false
-local localVer = 0.7
+local localVer = 0.8
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersVersion.txt", function(output)
     currentVer = tonumber(output)
@@ -65,7 +65,8 @@ local badModders = {
     "qDependency",
     "La69emeFace",
     "Lissssaaa",
-    "Awxnox"
+    "Awxnox",
+    "Jeruvxia"
 }
 
 local rids = {
@@ -93,7 +94,8 @@ local rids = {
     "88201667 ",
     "193782695",
     "246530233",
-    "238684227"
+    "238684227",
+    "221585116"
 }
 
 local playersList = players.list(true, true, true)
@@ -110,7 +112,7 @@ end
 
 
 menu.divider(menu.my_root(), "LAST UPDATE")
-menu.divider(menu.my_root(), "28/02/2024   03H00 AM")
+menu.divider(menu.my_root(), "28/02/2024   18H40")
 local modders = menu.list(menu.my_root(), "Bad Modders", {}, "")
 
 
@@ -186,3 +188,4 @@ players.dispatch_on_join()
 --Ty to .touftouf. for helping me a lot (this is me hehe)
 --Ty to im_too_strong for trying to help me
 --Ty to microsoft_ma for trying to help me
+--Ty to r_i_d_g_e for helping me

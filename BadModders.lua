@@ -1,34 +1,51 @@
+local dev_mode = false 
+
 if not async_http.have_access() then
     util.toast("Disable 'Disable Internet Access'!")
     util.stop_script()
 end
 
 
-    async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModdersVersion.txt',function(b)
-        currentVer = tonumber(b)
-        response = true;
-        if BadModdersVersion ~= currentVer then
-            util.toast("New Version found")
-            async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
-                local d = select(2,load(c))
-                if d then
-                    util.toast("Update failed to download, please re-download manually via Github or using Addict Discord Server.")
-                    return
-                end;
-                local e = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH,"wb")
-                e:write(c)
-                e:close()
-                util.toast("Update Done!")
-                util.restart_script()
+
+
+local github = menu.list(menu.my_root(), "Updates", {"badmoddersupdates"})
+menu.hyperlink(github, "Discord", "https://discord.gg/")
+
+async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersChangelog.txt",function(text)
+    menu.action(github, "Changelog", {"badmodderschangelog"}, text, function() end)
+    response=true;
+end)
+async_http.dispatch()
+repeat util.yield()
+until response
+
+if not dev_mode then
+    async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)
+    currentVer=tonumber(b)
+    response=true;
+    if BadModdersVersion~=currentVer then
+        util.toast("New Version found")async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
+        local d=select(2,load(c))
+        if d then
+            util.toast("Update failed to download, please re-download manually via Github or using Addict Discord Server.")
+            return
+            end;
+            local e=io.open(filesystem.scripts_dir()..SCRIPT_RELPATH,"wb")
+            e:write(c)
+            e:close()
+            util.toast("Update Done!")
+            util.restart_script()
             end)
             async_http.dispatch()
         end
     end,
     function()
-        response = true
+        response=true
     end)
     async_http.dispatch()
-    repeat util.yield() until response
+    repeat util.yield()
+    until response
+end
 --=========================================UPDATES==============================================--
 
 ----------------------------------------------------------------
@@ -50,7 +67,12 @@ local badModders = {
     "gamercats2",
     "Cloudflare",
     "JustCallMeDenny",
-    "TheROME007"
+    "TheROME007",
+    "Sheex",
+    "Aka",
+    "",
+    "",
+    ""
 }
 
 local rids = {
@@ -64,7 +86,12 @@ local rids = {
     "79991903",
     "55401915",
     "242595307",
-    "160274841"
+    "160274841",
+    "",
+    "",
+    "",
+    "",
+    ""
 }
 
 local playersList = players.list(true, true, true)

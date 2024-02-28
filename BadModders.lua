@@ -10,7 +10,7 @@ end
 local response = false
 local localVer = 0.2
 local localKs = false
-async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModdersVersion.txt", function(output)
+async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersVersion.txt", function(output)
     currentVer = tonumber(output)
     response = true
     if localVer ~= currentVer then

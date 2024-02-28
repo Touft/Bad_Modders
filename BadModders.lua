@@ -55,12 +55,7 @@ local badModders = {
     "gamercats2",
     "Cloudflare",
     "JustCallMeDenny",
-    "TheROME007",
-    "Sheex",
-    "Aka",
-    "",
-    "",
-    ""
+    "TheROME007"
 }
 
 local rids = {
@@ -74,12 +69,7 @@ local rids = {
     "79991903",
     "55401915",
     "242595307",
-    "160274841",
-    "",
-    "",
-    "",
-    "",
-    ""
+    "160274841"
 }
 
 local playersList = players.list(true, true, true)

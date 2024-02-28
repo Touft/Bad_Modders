@@ -3,16 +3,12 @@ if not async_http.have_access() then
     util.stop_script()
 end
 
-local response = false
 
-if not dev_mode then
-    local response = false
-    async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)
+    async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModdersVersion.txt',function(b)
         currentVer = tonumber(b)
         response = true;
         if BadModdersVersion ~= currentVer then
             util.toast("New Version found")
-            local response = false
             async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
                 local d = select(2,load(c))
                 if d then
@@ -33,7 +29,6 @@ if not dev_mode then
     end)
     async_http.dispatch()
     repeat util.yield() until response
-end
 --=========================================UPDATES==============================================--
 
 ----------------------------------------------------------------
@@ -55,7 +50,12 @@ local badModders = {
     "gamercats2",
     "Cloudflare",
     "JustCallMeDenny",
-    "TheROME007"
+    "TheROME007",
+    "Sheex",
+    "Aka",
+    "",
+    "",
+    ""
 }
 
 local rids = {
@@ -69,7 +69,12 @@ local rids = {
     "79991903",
     "55401915",
     "242595307",
-    "160274841"
+    "160274841",
+    "",
+    "",
+    "",
+    "",
+    ""
 }
 
 local playersList = players.list(true, true, true)

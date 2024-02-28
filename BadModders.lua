@@ -5,9 +5,6 @@ end
 
 local response = false
 
-async_http.dispatch()
-repeat util.yield() until response
-
 if not dev_mode then
     local response = false
     async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)

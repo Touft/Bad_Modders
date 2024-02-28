@@ -3,26 +3,19 @@ if not async_http.have_access() then
     util.stop_script()
 end
 
-local response = false  -- Initialisation de la variable response à false
+local response = false
 
-local github = menu.list(menu.my_root(), "Updates", {"moddersupdate"}, "")
-menu.hyperlink(github, "Discord", "https://discord.gg/")
-
-async_http.init("raw.githubusercontent.com","",function(text)
-    menu.action(github, "Changelog", {"modderschangelog"}, text, function() end)
-    response = true;  -- Définition de response à true après avoir reçu la réponse de la requête HTTP
-end)
 async_http.dispatch()
 repeat util.yield() until response
 
 if not dev_mode then
-    local response = false  -- Réinitialisation de response à false pour la prochaine requête HTTP
+    local response = false
     async_http.init("raw.githubusercontent.com","/Touft/Bad_Modders/main/BadModdersVersion.txt",function(b)
         currentVer = tonumber(b)
-        response = true;  -- Définition de response à true après avoir reçu la réponse de la requête HTTP
+        response = true;
         if BadModdersVersion ~= currentVer then
             util.toast("New Version found")
-            local response = false  -- Réinitialisation de response à false pour la prochaine requête HTTP
+            local response = false
             async_http.init('raw.githubusercontent.com','/Touft/Bad_Modders/main/BadModders.lua',function(c)
                 local d = select(2,load(c))
                 if d then
@@ -39,7 +32,7 @@ if not dev_mode then
         end
     end,
     function()
-        response = true  -- Définition de response à true en cas d'erreur de la requête HTTP
+        response = true
     end)
     async_http.dispatch()
     repeat util.yield() until response

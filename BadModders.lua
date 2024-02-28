@@ -5,7 +5,7 @@ if not async_http.have_access() then
 end
 
 local response = false
-local localVer = 0.5
+local localVer = 0.6
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/Touft/Bad_Modders/main/BadModersVersion.txt", function(output)
     currentVer = tonumber(output)
@@ -107,7 +107,8 @@ for _, playerId in ipairs(playersList) do
 end
 
 
-menu.divider(menu.my_root(), "")
+menu.divider(menu.my_root(), "LAST UPDATE")
+menu.divider(menu.my_root(), "28/02/2024   02H20 AM")
 local modders = menu.list(menu.my_root(), "Bad Modders", {}, "")
 
 
